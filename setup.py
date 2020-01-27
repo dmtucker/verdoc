@@ -40,8 +40,8 @@ if __name__ == '__main__':
         url='https://pypi.org/project/verdoc',
         project_urls={
             'Code': 'https://github.com/dmtucker/verdoc',
+            'Documentation': 'https://dmtucker.github.io/verdoc',
             'Issues': 'https://github.com/dmtucker/verdoc/issues',
-            'Builds': 'https://travis-ci.com/dmtucker/verdoc',
         },
         package_dir={'': 'src'},
         packages=setuptools.find_packages('src'),
