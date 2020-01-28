@@ -177,7 +177,7 @@ class GitBuildContext:
             dest_dir=self._dest_dir,
         )
 
-    def __exit__(self, exc_type, exc, traceback_) -> bool:
+    def __exit__(self, exc_type, exc, traceback_):
         """Clean up the temporary clone."""
         if not exc:
             self.write_commit()
