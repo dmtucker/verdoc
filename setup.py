@@ -34,6 +34,7 @@ if __name__ == "__main__":
         use_scm_version=True,
         description="Deploy references from source control.",
         long_description=read("README.rst"),
+        long_description_content_type="x-rst",
         author="David Tucker",
         author_email="david@tucker.name",
         license="LGPLv2+",
