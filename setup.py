@@ -16,55 +16,54 @@ import setuptools  # type: ignore
 def read(*parts):
     """Read a file in this repository."""
     here = os.path.abspath(os.path.dirname(__file__))
-    with codecs.open(os.path.join(here, *parts), 'r') as file_:
+    with codecs.open(os.path.join(here, *parts), "r") as file_:
         return file_.read()
 
 
 ENTRY_POINTS = {
-    'console_scripts': [
-        'verdoc = verdoc:cli',
-        'verdoc-index = verdoc:cli_index',
+    "console_scripts": [
+        "verdoc = verdoc:cli",
+        "verdoc-index = verdoc:cli_index",
     ],
 }
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     setuptools.setup(
-        name='verdoc',
+        name="verdoc",
         use_scm_version=True,
-        description='Deploy references from source control.',
-        long_description=read('README.rst'),
-        author='David Tucker',
-        author_email='david@tucker.name',
-        license='LGPLv2+',
-        url='https://pypi.org/project/verdoc',
+        description="Deploy references from source control.",
+        long_description=read("README.rst"),
+        author="David Tucker",
+        author_email="david@tucker.name",
+        license="LGPLv2+",
+        url="https://pypi.org/project/verdoc",
         project_urls={
-            'Code': 'https://github.com/dmtucker/verdoc',
-            'Documentation': 'https://dmtucker.github.io/verdoc',
-            'Issues': 'https://github.com/dmtucker/verdoc/issues',
+            "Code": "https://github.com/dmtucker/verdoc",
+            "Documentation": "https://dmtucker.github.io/verdoc",
+            "Issues": "https://github.com/dmtucker/verdoc/issues",
         },
-        package_dir={'': 'src'},
-        packages=setuptools.find_packages('src'),
+        package_dir={"": "src"},
+        packages=setuptools.find_packages("src"),
         py_modules=[
-            os.path.splitext(os.path.basename(path))[0]
-            for path in glob('src/*.py')
+            os.path.splitext(os.path.basename(path))[0] for path in glob("src/*.py")
         ],
         include_package_data=True,
-        setup_requires=['setuptools_scm'],
-        python_requires='~= 3.7',
+        setup_requires=["setuptools_scm"],
+        python_requires="~= 3.7",
         install_requires=[
-            'click ~= 7.0',
-            'GitPython ~= 3.0',
-            'setuptools ~= 41.2',
+            "click ~= 7.0",
+            "GitPython ~= 3.0",
+            "setuptools ~= 41.2",
         ],
         entry_points=ENTRY_POINTS,
         classifiers=[
-            'License :: OSI Approved :: '
-            'GNU Lesser General Public License v2 or later (LGPLv2+)',
-            'Intended Audience :: End Users/Desktop',
-            'Programming Language :: Python :: 3.7',
-            'Programming Language :: Python :: 3.8',
-            'Programming Language :: Python :: 3.9',
-            'Development Status :: 3 - Alpha',
+            "License :: OSI Approved :: "
+            "GNU Lesser General Public License v2 or later (LGPLv2+)",
+            "Intended Audience :: End Users/Desktop",
+            "Programming Language :: Python :: 3.7",
+            "Programming Language :: Python :: 3.8",
+            "Programming Language :: Python :: 3.9",
+            "Development Status :: 3 - Alpha",
         ],
     )
