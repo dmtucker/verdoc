@@ -32,6 +32,7 @@ version = '.'.join(release.split('.', 2)[:2])
 extensions = [
     'sphinx.ext.autodoc',
     'sphinx.ext.githubpages',
+    'sphinx.ext.graphviz',
     'sphinx_click.ext',
 ]
 
