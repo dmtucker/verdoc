@@ -59,7 +59,7 @@ class BuildJob:
 
     def log_path(self) -> str:
         """Return the path to the build log."""
-        return os.path.join(self.dest_dir, 'build.log')
+        return os.path.join(self.dest_dir, "build.log")
 
 
 @dataclass
@@ -90,7 +90,7 @@ class BuildManager:
         # https://github.com/python/mypy/issues/5485
         with self.build_context(build_spec) as build_job:  # type: ignore
             LOGGER.debug(
-                '[%s] %s: %s',
+                "[%s] %s: %s",
                 build_spec.refname,
                 self.__class__.__name__,
                 build_job,
@@ -101,7 +101,7 @@ class BuildManager:
     def build_target(self, refname: str) -> int:
         """Build ``refname`` and return an exit status."""
         try:
-            LOGGER.info('[%s] started', refname)
+            LOGGER.info("[%s] started", refname)
             self.build_protocol(
                 build_spec=BuildSpec(
                     repo_path=self.repo_path,
@@ -110,19 +110,19 @@ class BuildManager:
                 ),
             )
         except ReferenceNotFoundError as exc:
-            LOGGER.error('[%s] cancelled, %s', refname, exc)
+            LOGGER.error("[%s] cancelled, %s", refname, exc)
             return 1
         except ReferenceAlreadyBuiltError as exc:
-            LOGGER.warning('[%s] skipped, %s', refname, exc)
+            LOGGER.warning("[%s] skipped, %s", refname, exc)
             return 0
         except UnbuildableBuildJobError as exc:
-            LOGGER.error('[%s] aborted, %s', refname, exc)
+            LOGGER.error("[%s] aborted, %s", refname, exc)
             return 1
         except FailedBuildJobError as exc:
-            LOGGER.error('[%s] failed, %s', refname, exc)
+            LOGGER.error("[%s] failed, %s", refname, exc)
             return 1
         else:
-            LOGGER.info('[%s] succeeded', refname)
+            LOGGER.info("[%s] succeeded", refname)
             return 0
 
 
@@ -211,7 +211,7 @@ class GitBuildContext:
 
     def commit_file_path(self) -> str:
         """Get the path to a file that contains the already-built commit."""
-        return os.path.join(self._dest_dir, '.commit')
+        return os.path.join(self._dest_dir, ".commit")
 
     def write_commit(self) -> None:
         """Write ``self.commit_file_path()``."""
@@ -223,7 +223,7 @@ class GitBuildContext:
             self._ref.commit,
             commit_file_path,
         )
-        with open(self.commit_file_path(), 'w') as commit_file:
+        with open(self.commit_file_path(), "w") as commit_file:
             commit_file.write(str(self._ref.commit))
 
 
@@ -231,7 +231,7 @@ class GitBuildContext:
 class ToxBuilder:
     """Use tox to build."""
 
-    env: str = 'verdoc'
+    env: str = "verdoc"
 
     def __call__(self, build_job: BuildJob) -> None:
         """Run ``tox -e '{self.env}' -- '{build_job.dest_dir}'``."""
@@ -250,7 +250,7 @@ class ToxBuilder:
             except FileExistsError as exc:
                 LOGGER.debug("[%s] tox: %s", build_job.name, exc)
             build_log_path = build_job.log_path()
-            with open(build_log_path, 'w') as build_log:
+            with open(build_log_path, "w") as build_log:
                 LOGGER.debug(
                     "[%s] %s: Logging to '%s'...",
                     build_job.name,
@@ -270,16 +270,16 @@ class ToxBuilder:
             raise FailedBuildJobError(str(exc)) from exc
 
     def _tox(
-            self,
-            configfile: Optional[str] = None,
-            posargs: Optional[List] = None,
+        self,
+        configfile: Optional[str] = None,
+        posargs: Optional[List] = None,
     ) -> List[str]:
         """Return a tox command that can be passed to ``subprocess.run``."""
-        tox = ['tox', '-e', self.env]
+        tox = ["tox", "-e", self.env]
         if configfile:
-            tox.extend(['-c', configfile])
+            tox.extend(["-c", configfile])
         if posargs:
-            tox.extend(['--'] + posargs)
+            tox.extend(["--"] + posargs)
         return tox
 
     def check_build(self, build_job: BuildJob) -> None:
@@ -293,7 +293,7 @@ class ToxBuilder:
         )
         try:
             subprocess.run(
-                self._tox(configfile=build_job.source_dir) + ['--showconfig'],
+                self._tox(configfile=build_job.source_dir) + ["--showconfig"],
                 capture_output=True,
                 check=True,
                 text=True,
@@ -301,7 +301,8 @@ class ToxBuilder:
         except subprocess.CalledProcessError as exc:
             raise UnbuildableBuildJobError(
                 # https://github.com/tox-dev/tox/issues/1434
-                exc.stderr.strip() or exc.stdout.strip(),
+                exc.stderr.strip()
+                or exc.stdout.strip(),
             ) from exc
 
 
@@ -310,66 +311,64 @@ class ToxBuilder:
 
 # https://github.com/python/typeshed/pull/3385
 DEST_OPTION = click.option(  # type: ignore
-    '--dest',
-    help='Specify the path to build in.',
+    "--dest",
+    help="Specify the path to build in.",
     nargs=1,
     type=click.Path(),
     default=os.getcwd(),
-    show_default='current working directory',
+    show_default="current working directory",
 )
 VERSION_OPTION = click.version_option(__version__)
 
 
 @click.command()
 @click.option(
-    '--build-opt',
-    help='Pass keyword arguments to the builder (e.g. foo=bar).',
+    "--build-opt",
+    help="Pass keyword arguments to the builder (e.g. foo=bar).",
     nargs=1,
     multiple=True,
 )
 @DEST_OPTION
 @click.option(
-    '--log-level',
-    help='Specify how verbose output should be.',
+    "--log-level",
+    help="Specify how verbose output should be.",
     nargs=1,
     type=click.Choice(
-        ['debug', 'info', 'warning', 'error', 'critical'],
+        ["debug", "info", "warning", "error", "critical"],
         case_sensitive=False,
     ),
-    default='info',
+    default="info",
     show_default=True,
 )
 # https://github.com/python/typeshed/pull/3385
 @click.option(  # type: ignore
-    '--repo',
-    help='Specify the repository to look for references in.',
+    "--repo",
+    help="Specify the repository to look for references in.",
     nargs=1,
     type=click.Path(exists=True),
     default=os.getcwd(),
-    show_default='current working directory',
+    show_default="current working directory",
 )  # pylint: disable=too-many-arguments
 @VERSION_OPTION
-@click.argument('refnames', nargs=-1)
+@click.argument("refnames", nargs=-1)
 @click.pass_context
 def cli(
-        ctx: click.Context,
-        build_opt: Sequence[str],
-        dest: str,
-        log_level: str,
-        repo: str,
-        refnames: Sequence[str],
+    ctx: click.Context,
+    build_opt: Sequence[str],
+    dest: str,
+    log_level: str,
+    repo: str,
+    refnames: Sequence[str],
 ) -> NoReturn:
     """Get ``REFNAMES`` from ``--repo`` and build them into ``--dest``."""
     logging.basicConfig(level=logging.getLevelName(log_level.upper()))
     builder_kwargs = {
-        key: value
-        for opt in build_opt
-        for key, _, value in [opt.partition('=')]
+        key: value for opt in build_opt for key, _, value in [opt.partition("=")]
     }
     try:
         builder = ToxBuilder(**builder_kwargs)
     except TypeError as exc:
-        LOGGER.error('Builder creation failed (%s).', exc)
+        LOGGER.error("Builder creation failed (%s).", exc)
         ctx.exit(1)
     ctx.exit(
         BuildManager(
@@ -386,9 +385,10 @@ def cli(
 def redirect_web(path: str, url: str) -> None:
     """Create an HTML file at ``path`` that redirects to ``url``."""
     LOGGER.info("Redirecting '%s' to '%s'...", path, url)
-    with open(path, 'w') as html_file:
+    with open(path, "w") as html_file:
         html_file.write(
-            textwrap.dedent(f'''\
+            textwrap.dedent(
+                f"""\
                 <!DOCTYPE HTML>
                 <html lang="en">
                 <head>
@@ -400,19 +400,20 @@ def redirect_web(path: str, url: str) -> None:
                 <a href="{url}">{url}</a>
                 </body>
                 </html>
-            '''),
+            """,
+            ),
         )
 
 
 @click.command()
 @DEST_OPTION
 @VERSION_OPTION
-@click.argument('url', nargs=1)
+@click.argument("url", nargs=1)
 @click.pass_context
 def cli_index(ctx: click.Context, dest: str, url: str) -> NoReturn:
     """Create an index.html file in ``--dest`` that redirects to ``URL``."""
     try:
-        redirect_web(path=os.path.join(dest, 'index.html'), url=url)
+        redirect_web(path=os.path.join(dest, "index.html"), url=url)
     except OSError as exc:
         LOGGER.error(exc)
         ctx.exit(1)
