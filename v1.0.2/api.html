@@ -1,0 +1,426 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>API &mdash; Verdoc 1.0.2 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="CLI" href="cli.html" />
+    <link rel="prev" title="Verdoc Documentation" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Verdoc
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#architecture">Architecture</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="cli.html">CLI</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Verdoc</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>API</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/api.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-verdoc">
+<span id="api"></span><h1>API<a class="headerlink" href="#module-verdoc" title="Permalink to this headline">¶</a></h1>
+<p>Deploy references from source control.</p>
+<dl class="py exception">
+<dt class="sig sig-object py" id="verdoc.BuildContextError">
+<em class="property"><span class="pre">exception</span> </em><span class="sig-prename descclassname"><span class="pre">verdoc.</span></span><span class="sig-name descname"><span class="pre">BuildContextError</span></span><a class="headerlink" href="#verdoc.BuildContextError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Exceptions emitted from the build context inherit from this error.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="verdoc.BuildJob">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">verdoc.</span></span><span class="sig-name descname"><span class="pre">BuildJob</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source_dir</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dest_dir</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#verdoc.BuildJob" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bundle data needed to build.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="verdoc.BuildJob.log_path">
+<span class="sig-name descname"><span class="pre">log_path</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">str</span><a class="headerlink" href="#verdoc.BuildJob.log_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the path to the build log.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="verdoc.BuildManager">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">verdoc.</span></span><span class="sig-name descname"><span class="pre">BuildManager</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">repo_path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">build_context</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#verdoc.BuildSpec" title="verdoc.BuildSpec"><span class="pre">verdoc.BuildSpec</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span> </span><span class="pre">AbstractContextManager</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#verdoc.BuildJob" title="verdoc.BuildJob"><span class="pre">verdoc.BuildJob</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">builder</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#verdoc.BuildJob" title="verdoc.BuildJob"><span class="pre">verdoc.BuildJob</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span> </span><span class="pre">None</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dest_dir</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#verdoc.BuildManager" title="Permalink to this definition">¶</a></dt>
+<dd><p>Build references from <code class="docutils literal notranslate"><span class="pre">repo_path</span></code> into <code class="docutils literal notranslate"><span class="pre">dest_dir</span></code>.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="verdoc.BuildManager.build">
+<span class="sig-name descname"><span class="pre">build</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">refnames</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">int</span><a class="headerlink" href="#verdoc.BuildManager.build" title="Permalink to this definition">¶</a></dt>
+<dd><p>Build <code class="docutils literal notranslate"><span class="pre">refnames</span></code> and return an exit status.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="verdoc.BuildManager.build_protocol">
+<span class="sig-name descname"><span class="pre">build_protocol</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">build_spec</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#verdoc.BuildSpec" title="verdoc.BuildSpec"><span class="pre">verdoc.BuildSpec</span></a></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#verdoc.BuildManager.build_protocol" title="Permalink to this definition">¶</a></dt>
+<dd><p>Build <code class="docutils literal notranslate"><span class="pre">build_spec</span></code>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="verdoc.BuildManager.build_target">
+<span class="sig-name descname"><span class="pre">build_target</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">refname</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">int</span><a class="headerlink" href="#verdoc.BuildManager.build_target" title="Permalink to this definition">¶</a></dt>
+<dd><p>Build <code class="docutils literal notranslate"><span class="pre">refname</span></code> and return an exit status.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="verdoc.BuildSpec">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">verdoc.</span></span><span class="sig-name descname"><span class="pre">BuildSpec</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">repo_path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">refname</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dest_dir</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#verdoc.BuildSpec" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bundle data needed to make a build job.</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="verdoc.BuilderError">
+<em class="property"><span class="pre">exception</span> </em><span class="sig-prename descclassname"><span class="pre">verdoc.</span></span><span class="sig-name descname"><span class="pre">BuilderError</span></span><a class="headerlink" href="#verdoc.BuilderError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Exceptions emitted from the builder inherit from this error.</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="verdoc.FailedBuildJobError">
+<em class="property"><span class="pre">exception</span> </em><span class="sig-prename descclassname"><span class="pre">verdoc.</span></span><span class="sig-name descname"><span class="pre">FailedBuildJobError</span></span><a class="headerlink" href="#verdoc.FailedBuildJobError" title="Permalink to this definition">¶</a></dt>
+<dd><p>A build job failed.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="verdoc.GitBuildContext">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">verdoc.</span></span><span class="sig-name descname"><span class="pre">GitBuildContext</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">build_spec</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#verdoc.BuildSpec" title="verdoc.BuildSpec"><span class="pre">verdoc.BuildSpec</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#verdoc.GitBuildContext" title="Permalink to this definition">¶</a></dt>
+<dd><p>Build Git references.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="verdoc.GitBuildContext.__enter__">
+<span class="sig-name descname"><span class="pre">__enter__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="#verdoc.BuildJob" title="verdoc.BuildJob"><span class="pre">verdoc.BuildJob</span></a><a class="headerlink" href="#verdoc.GitBuildContext.__enter__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a build job using a temporary clone.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="verdoc.GitBuildContext.__exit__">
+<span class="sig-name descname"><span class="pre">__exit__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">exc_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exc</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">traceback_</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#verdoc.GitBuildContext.__exit__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Clean up the temporary clone.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="verdoc.GitBuildContext.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">build_spec</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#verdoc.BuildSpec" title="verdoc.BuildSpec"><span class="pre">verdoc.BuildSpec</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#verdoc.GitBuildContext.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Look up <code class="docutils literal notranslate"><span class="pre">build_spec.refname</span></code> in <code class="docutils literal notranslate"><span class="pre">build_spec.repo_path</span></code>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="verdoc.GitBuildContext.already_built_commit">
+<span class="sig-name descname"><span class="pre">already_built_commit</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#verdoc.GitBuildContext.already_built_commit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read <code class="docutils literal notranslate"><span class="pre">self.commit_file_path()</span></code>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="verdoc.GitBuildContext.commit_file_path">
+<span class="sig-name descname"><span class="pre">commit_file_path</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">str</span><a class="headerlink" href="#verdoc.GitBuildContext.commit_file_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the path to a file that contains the already-built commit.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="verdoc.GitBuildContext.write_commit">
+<span class="sig-name descname"><span class="pre">write_commit</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#verdoc.GitBuildContext.write_commit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write <code class="docutils literal notranslate"><span class="pre">self.commit_file_path()</span></code>.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="verdoc.ReferenceAlreadyBuiltError">
+<em class="property"><span class="pre">exception</span> </em><span class="sig-prename descclassname"><span class="pre">verdoc.</span></span><span class="sig-name descname"><span class="pre">ReferenceAlreadyBuiltError</span></span><a class="headerlink" href="#verdoc.ReferenceAlreadyBuiltError" title="Permalink to this definition">¶</a></dt>
+<dd><p>A refname has already been built by the build context.</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="verdoc.ReferenceNotFoundError">
+<em class="property"><span class="pre">exception</span> </em><span class="sig-prename descclassname"><span class="pre">verdoc.</span></span><span class="sig-name descname"><span class="pre">ReferenceNotFoundError</span></span><a class="headerlink" href="#verdoc.ReferenceNotFoundError" title="Permalink to this definition">¶</a></dt>
+<dd><p>A refname is not recognized by the build context.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="verdoc.ToxBuilder">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">verdoc.</span></span><span class="sig-name descname"><span class="pre">ToxBuilder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">env</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">'verdoc'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#verdoc.ToxBuilder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Use tox to build.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="verdoc.ToxBuilder.__call__">
+<span class="sig-name descname"><span class="pre">__call__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">build_job</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#verdoc.BuildJob" title="verdoc.BuildJob"><span class="pre">verdoc.BuildJob</span></a></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#verdoc.ToxBuilder.__call__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run <code class="docutils literal notranslate"><span class="pre">tox</span> <span class="pre">-e</span> <span class="pre">'{self.env}'</span> <span class="pre">--</span> <span class="pre">'{build_job.dest_dir}'</span></code>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="verdoc.ToxBuilder.check_build">
+<span class="sig-name descname"><span class="pre">check_build</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">build_job</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#verdoc.BuildJob" title="verdoc.BuildJob"><span class="pre">verdoc.BuildJob</span></a></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#verdoc.ToxBuilder.check_build" title="Permalink to this definition">¶</a></dt>
+<dd><p>Raise UnbuildableBuildJobError if <code class="docutils literal notranslate"><span class="pre">build_job</span></code> is not buildable.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="verdoc.UnbuildableBuildJobError">
+<em class="property"><span class="pre">exception</span> </em><span class="sig-prename descclassname"><span class="pre">verdoc.</span></span><span class="sig-name descname"><span class="pre">UnbuildableBuildJobError</span></span><a class="headerlink" href="#verdoc.UnbuildableBuildJobError" title="Permalink to this definition">¶</a></dt>
+<dd><p>A build job is not buildable.</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="verdoc.VerdocError">
+<em class="property"><span class="pre">exception</span> </em><span class="sig-prename descclassname"><span class="pre">verdoc.</span></span><span class="sig-name descname"><span class="pre">VerdocError</span></span><a class="headerlink" href="#verdoc.VerdocError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Exceptions emitted from this module inherit from this error.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="verdoc.redirect_web">
+<span class="sig-prename descclassname"><span class="pre">verdoc.</span></span><span class="sig-name descname"><span class="pre">redirect_web</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">url</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#verdoc.redirect_web" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create an HTML file at <code class="docutils literal notranslate"><span class="pre">path</span></code> that redirects to <code class="docutils literal notranslate"><span class="pre">url</span></code>.</p>
+</dd></dl>
+
+<div class="section" id="architecture">
+<h2>Architecture<a class="headerlink" href="#architecture" title="Permalink to this headline">¶</a></h2>
+<div class="graphviz"><img src="_images/graphviz-863317c6e1e1e85ccdd1e7f423df2c2a9c352fdd.png" alt="digraph verdoc_invocation {
+  rankdir=TB
+  label=&quot;verdoc --build-opt env=foo vA.B.C vX.Y.Z&quot;
+  labeljust=l
+  compound=true
+  ranksep=0.75
+  subgraph cluster_verdoc {
+    label=&quot;verdoc&quot;
+    subgraph cluster_builder {
+      label=&quot;ToxBuilder(env=\&quot;foo\&quot;)&quot;
+      builder_class [shape=plaintext label=&quot;tox -e foo&quot;]
+    }
+    subgraph cluster_context {
+      label=&quot;GitBuildContext&quot;
+      context_class [shape=plaintext label=&quot;git clone -b vA.B.C . $(mktemp -d)&quot;]
+    }
+    subgraph cluster_manager {
+      label=&quot;BuildManager&quot;
+      subgraph cluster_build {
+        label=&quot;build(['vA.B.C', 'vX.Y.Z'])&quot;
+        subgraph cluster_pool {
+          label=&quot;multiprocessing.Pool()&quot;
+          subgraph cluster_target {
+            label=&quot;build_target('vA.B.C')&quot;
+            style=filled
+            spec [label=&quot;BuildSpec()&quot;]
+            subgraph cluster_protocol {
+              label=&quot;build_protocol()&quot;
+              subgraph cluster_build_context {
+                label=&quot;build_context()&quot;
+                job [label=&quot;BuildJob()&quot;]
+              }
+              subgraph cluster_build_builder {
+                label=&quot;builder()&quot;
+                log [label=&quot;build.log&quot;]
+              }
+              job -&gt; log [lhead=cluster_build_builder]
+            }
+            spec -&gt; job [lhead=cluster_build_context]
+          }
+          subgraph cluster_target_next {
+            label=&quot;build_target('vX.Y.Z')&quot;
+            style=filled
+            dots [shape=plaintext label=&quot;...&quot;]
+          }
+        }
+      }
+      context_class -&gt; job [ltail=cluster_context lhead=cluster_build_context dir=none]
+      builder_class -&gt; log [ltail=cluster_builder lhead=cluster_build_builder dir=none]
+    }
+  }
+}" class="graphviz" /></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="cli.html" class="btn btn-neutral float-right" title="CLI" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="index.html" class="btn btn-neutral float-left" title="Verdoc Documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2019, David Tucker.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
