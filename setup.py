@@ -50,11 +50,11 @@ if __name__ == "__main__":
         ],
         include_package_data=True,
         setup_requires=["setuptools_scm"],
-        python_requires="~= 3.7",
+        python_requires=">= 3.7",
         install_requires=[
-            "click ~= 7.0",
-            "GitPython ~= 3.0",
-            "setuptools ~= 41.2",
+            "click >= 7.0",
+            "GitPython >= 3.0",
+            "setuptools >= 41.2",
         ],
         entry_points=ENTRY_POINTS,
         classifiers=[
